@@ -1,0 +1,73 @@
+html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic DOM</title>
+    <style>
+        #changeTextBtn { padding: 10px; }
+        #styleElement { color: blue; font-size: 16px; }
+        #addElementBtn, #removeElementBtn { margin-top: 10px; padding: 8px; }
+        #newElement { margin-top: 5px; color: green; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Dynamic DOM Manipulation</h1>
+    </header>
+
+    <p id="textContent">Initial text content.</p>
+    <button id="changeTextBtn">Change Text</button>
+
+    <div id="styleElement">This text will be styled.</div>
+    <button id="styleBtn">Change Style</button>
+
+    <button id="addElementBtn">Add Element</button>
+    <div id="container"></div>
+    <button id="removeElementBtn">Remove Element</button>
+
+    <footer>
+        <p>&copy; 2025 Dynamic DOM Examples</p>
+    </footer>
+
+    <script>
+        // Change text content
+        const textContentElement = document.getElementById('textContent');
+        const changeTextButton = document.getElementById('changeTextBtn');
+        changeTextButton.addEventListener('click', () => {
+            textContentElement.textContent = 'Text content changed!';
+        });
+
+        // Modify CSS styles
+        const styleElement = document.getElementById('styleElement');
+        const styleButton = document.getElementById('styleBtn');
+        styleButton.addEventListener('click', () => {
+            styleElement.style.color = 'red';
+            styleElement.style.fontSize = '20px';
+        });
+
+        // Add or remove element
+        const addElementButton = document.getElementById('addElementBtn');
+        const removeElementButton = document.getElementById('removeElementBtn');
+        const container = document.getElementById('container');
+        let newElement = null;
+
+        addElementButton.addEventListener('click', () => {
+            if (!newElement) {
+                newElement = document.createElement('p');
+                newElement.id = 'newElement';
+                newElement.textContent = 'New element added.';
+                container.appendChild(newElement);
+            }
+        });
+
+        removeElementButton.addEventListener('click', () => {
+            if (newElement) {
+                container.removeChild(newElement);
+                newElement = null;
+            }
+        });
+    </script>
+</body>
+</html>
